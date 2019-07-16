@@ -1,0 +1,505 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base/>
+    <script src="~/Content/catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="~/Content/catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="~/Content/catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playball" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bigshot+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="~/Content/catalog/view/theme/OPC090218/stylesheet/stylesheet.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/OPC090218/stylesheet/megnor/carousel.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/OPC090218/stylesheet/megnor/custom.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/OPC090218/stylesheet/megnor/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/OPC090218/stylesheet/megnor/lightbox.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/OPC090218/stylesheet/megnor/animate.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/javascript/jquery/magnific/magnific-popup.css">
+    <link href="~/Content/catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/Content/catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" type="text/css" rel="stylesheet" media="screen" />
+
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/parallex.js"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/custom.js"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/jstree.min.js"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/carousel.min.js"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/megnor.min.js"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/jquery.custom.min.js"></script>
+    <script src="~/Content/catalog/view/javascript/megnor/tabs.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/lightbox/lightbox-2.6.min.js"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/jquery.elevatezoom.min.js"></script>
+    <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/bootstrap-notify.min.js"></script>
+
+    <script>
+
+               function quickbox(){
+                if ($(window).width() > 767) {
+               		$('.quickview').magnificPopup({
+               			type:'iframe',
+               			delegate: 'a',
+               			preloader: true,
+               			tLoading: 'Loading image #%curr%...',
+               		});
+                }
+               }
+               jQuery(document).ready(function() {quickbox();});
+               jQuery(window).resize(function() {quickbox();});
+
+    </script>
+    <script src="~/Content/catalog/view/javascript/common.js" type="text/javascript"></script>
+    <link href="~/Content/image/catalog/cart.png" rel="icon" />
+    <script src="~/Content/catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+</head>
+<body class="product-category-20_33_63 layout-2 left-col">
+    <nav id="top">
+        <div class="container">
+            <div class="social_block">
+                <ul>
+                    <li class="facebook"><a href="http://facebook.com"><i class="fa fa-facebook"></i> </a></li>
+                    <li class="twitter"><a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                    <li class="instagrm"><a href="http://instagram.com/"><i class="fa fa-instagram"></i></a></li>
+                    <li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                    <li class="whatsapp"><a href="https://web.whatsapp.com"><i class="fa fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+            <div id="top-links" class="nav pull-right">
+                <ul class="list-inline">
+                    <li>
+                        <div class="content_headercms_top">
+                            <div class="Advertise">Free shipping on all orders over $75!</div>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown myaccount">
+                        <a href="indexe223.html?route=account/account" title="My Account" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-right myaccount-menu">
+                            @using Microsoft.AspNet.Identity
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                @Html.AntiForgeryToken()
+                                <li><a href="~/Manage" class="dropdown-item notify-item"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item notify-item"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
+                                 }
+
+                                }
+                                else
+                                {
+                                    <li><a href="~/Account/Register">Register</a></li>
+                                    <li><a href="~/Account/Login">Login</a></li>
+                                }
+
+
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="header_center_static">
+                    <div class="free_shipping">
+                        <div class="first">Free Shipping</div>
+                        <div class="second">On Over $75</div>
+                    </div>
+                    <span class="img-icon mobile"></span>
+                    <div class="call_us">
+                        <div class="first">Call Us</div>
+                        <div class="second">0123-456-789</div>
+                    </div>
+                </div>
+                <div class="col-sm-4 logo">
+                    <div id="logo">
+                        <a href="~/"><img src="~/Content/image/catalog/logo.png" title="Your Store" alt="Your Store" class="img-responsive" /></a>
+                    </div>
+                </div>
+                <div class="header_right">
+                    <div class="col-sm-3 header_cart">
+                        <div id="cart" class="btn-group btn-block">
+                            <div data-toggle="dropdown" data-loading-text="Loading..." class="cart_button btn btn-inverse btn-block btn-lg dropdown-toggle">
+                                <span class="img-icon cart"></span>
+                                <div id="cart-total">
+                                    0 item(s)
+                                    <div class="total-payment"> $0.00 </div>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu pull-right cart-menu">
+                                <li>
+                                    <p class="text-center">Your shopping cart is empty!</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-container" role="navigation">
+        <div class="nav-inner container">
+            <div id="menu" class="main-menu">
+                <ul class="nav navbar-nav">
+                    <li class="top_level"> <a href="~/">Home</a></li>
+                    <li class="top_level">
+                        <a href="index98dc.html?route=product/category&amp;path=20">
+                            <span data-hover="Floral">Men</span>
+                        </a>
+                        <span class="active_menu"></span>
+                        <div class="categorybg">
+                            <div class="categoryinner">
+                                <ul>
+                                    <li class="categorycolumn">
+                                        <b><a class="submenu1" href="indexd9fe.html?route=product/category&amp;path=20_26">Floral Oriental</a></b>
+                                        <div class="cate_inner_bg">
+                                            <ul>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexcd74.html?route=product/category&amp;path=20_26_75">aromas</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index0296.html?route=product/category&amp;path=20_26_60">Lavender</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexacfe.html?route=product/category&amp;path=20_26_77">oakmoss</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index7d11.html?route=product/category&amp;path=20_26_61">Orange Blossom</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="categorycolumn">
+                                        <b><a class="submenu1" href="indexf345.html?route=product/category&amp;path=20_27">Soft Floral</a></b>
+                                        <div class="cate_inner_bg">
+                                            <ul>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexccda.html?route=product/category&amp;path=20_27_78">Cherry Blossom </a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index1dd9.html?route=product/category&amp;path=20_27_59">Jasmine</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index9c07.html?route=product/category&amp;path=20_27_62">Roses</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexb48e.html?route=product/category&amp;path=20_27_76">spicy-sweetness</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="categorycolumn">
+                                        <b><a class="submenu1" href="index3ebb.html?route=product/category&amp;path=20_33">Citrus</a></b>
+                                        <div class="cate_inner_bg">
+                                            <ul>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexfc61.html?route=product/category&amp;path=20_33_64">Cristalle Eau Verte </a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexcee4.html?route=product/category&amp;path=20_33_63">Giorgio Armani</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index72b4.html?route=product/category&amp;path=20_33_80">Pink Citron</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexe74a.html?route=product/category&amp;path=20_33_79">Pomegranet Blood Orange</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <li class="top_level">
+                        <a href="index7fa3.html?route=product/category&amp;path=18">
+                            <span data-hover="Oriental">Women</span>
+                        </a>
+                        <span class="active_menu"></span>
+                        <div class="categorybg">
+                            <div class="categoryinner">
+                                <ul>
+                                    <li class="categorycolumn">
+                                        <b><a class="submenu1" href="index96fb.html?route=product/category&amp;path=18_72">Mossy Woods</a></b>
+                                        <div class="cate_inner_bg">
+                                            <ul>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index20e2.html?route=product/category&amp;path=18_72_82">aromatic herbs</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexf00b.html?route=product/category&amp;path=18_72_73">Green</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index8284.html?route=product/category&amp;path=18_72_74">Spicy</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexdc43.html?route=product/category&amp;path=18_72_83">vetiver</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="categorycolumn">
+                                        <b><a class="submenu1" href="index9f41.html?route=product/category&amp;path=18_46">Soft Oriental</a></b>
+                                        <div class="cate_inner_bg">
+                                            <ul>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexe026.html?route=product/category&amp;path=18_46_68"> cinnamon</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="indexb897.html?route=product/category&amp;path=18_46_66"> musk</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index39c6.html?route=product/category&amp;path=18_46_67">clove</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index66de.html?route=product/category&amp;path=18_46_65">sandalwood</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="categorycolumn">
+                                        <b><a class="submenu1" href="index8470.html?route=product/category&amp;path=18_45">Woody Oriental</a></b>
+                                        <div class="cate_inner_bg">
+                                            <ul>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index4d1c.html?route=product/category&amp;path=18_45_70">barks and mosses</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index2634.html?route=product/category&amp;path=18_45_71">dominant amber</a></li>
+                                                <li style="padding-right:6px;"><a class="submenu2" href="index1f41.html?route=product/category&amp;path=18_45_69">patchouli</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <li class="menu-blog"> <a href="indexc295.html?route=information/blogger/blogs">Custom</a></li>
+                </ul>
+               
+            </div>
+            <!--  =============================================== Mobile menu start  =============================================  -->
+            <div id="res-menu" class="main-menu nav-container1">
+                <div class="nav-responsive">
+                    <span>Menu</span>
+                    <div class="expandable"></div>
+                </div>
+                <ul class="main-navigation">
+                    <li>
+                        <a href="index98dc.html?route=product/category&amp;path=20">Floral</a>
+                        <ul>
+                            <li>
+                                <a href="indexd9fe.html?route=product/category&amp;path=20_26" class="activSub">Floral Oriental</a>
+                                <ul>
+                                    <li><a href="indexcd74.html?route=product/category&amp;path=20_26_75">aromas</a></li>
+                                    <li><a href="index0296.html?route=product/category&amp;path=20_26_60">Lavender</a></li>
+                                    <li><a href="indexacfe.html?route=product/category&amp;path=20_26_77">oakmoss</a></li>
+                                    <li><a href="index7d11.html?route=product/category&amp;path=20_26_61">Orange Blossom</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="indexf345.html?route=product/category&amp;path=20_27" class="activSub">Soft Floral</a>
+                                <ul>
+                                    <li><a href="indexccda.html?route=product/category&amp;path=20_27_78">Cherry Blossom </a></li>
+                                    <li><a href="index1dd9.html?route=product/category&amp;path=20_27_59">Jasmine</a></li>
+                                    <li><a href="index9c07.html?route=product/category&amp;path=20_27_62">Roses</a></li>
+                                    <li><a href="indexb48e.html?route=product/category&amp;path=20_27_76">spicy-sweetness</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="index3ebb.html?route=product/category&amp;path=20_33" class="activSub">Citrus</a>
+                                <ul>
+                                    <li><a href="indexfc61.html?route=product/category&amp;path=20_33_64">Cristalle Eau Verte </a></li>
+                                    <li><a href="indexcee4.html?route=product/category&amp;path=20_33_63">Giorgio Armani</a></li>
+                                    <li><a href="index72b4.html?route=product/category&amp;path=20_33_80">Pink Citron</a></li>
+                                    <li><a href="indexe74a.html?route=product/category&amp;path=20_33_79">Pomegranet Blood Orange</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index7fa3.html?route=product/category&amp;path=18">Oriental</a>
+                        <ul>
+                            <li>
+                                <a href="index96fb.html?route=product/category&amp;path=18_72" class="activSub">Mossy Woods</a>
+                                <ul>
+                                    <li><a href="index20e2.html?route=product/category&amp;path=18_72_82">aromatic herbs</a></li>
+                                    <li><a href="indexf00b.html?route=product/category&amp;path=18_72_73">Green</a></li>
+                                    <li><a href="index8284.html?route=product/category&amp;path=18_72_74">Spicy</a></li>
+                                    <li><a href="indexdc43.html?route=product/category&amp;path=18_72_83">vetiver</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="index9f41.html?route=product/category&amp;path=18_46" class="activSub">Soft Oriental</a>
+                                <ul>
+                                    <li><a href="indexe026.html?route=product/category&amp;path=18_46_68"> cinnamon</a></li>
+                                    <li><a href="indexb897.html?route=product/category&amp;path=18_46_66"> musk</a></li>
+                                    <li><a href="index39c6.html?route=product/category&amp;path=18_46_67">clove</a></li>
+                                    <li><a href="index66de.html?route=product/category&amp;path=18_46_65">sandalwood</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="index8470.html?route=product/category&amp;path=18_45" class="activSub">Woody Oriental</a>
+                                <ul>
+                                    <li><a href="index4d1c.html?route=product/category&amp;path=18_45_70">barks and mosses</a></li>
+                                    <li><a href="index2634.html?route=product/category&amp;path=18_45_71">dominant amber</a></li>
+                                    <li><a href="index1f41.html?route=product/category&amp;path=18_45_69">patchouli</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index70a9.html?route=product/category&amp;path=57">Oceanic</a>
+                    </li>
+                    <li>
+                        <a href="index1647.html?route=product/category&amp;path=25">Woody</a>
+                        <ul>
+                            <li>
+                                <a href="indexe177.html?route=product/category&amp;path=25_28" class="activSub">Dry Woods</a>
+                                <ul>
+                                    <li><a href="index6d46.html?route=product/category&amp;path=25_28_36">patchouli</a></li>
+                                    <li><a href="indexdea7.html?route=product/category&amp;path=25_28_84">sandalwood</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="indexc219.html?route=product/category&amp;path=25_29" class="activSub">Mossy Woods</a>
+                                <ul>
+                                    <li><a href="indexa57d.html?route=product/category&amp;path=25_29_81">ambery</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="indexb152.html?route=product/category&amp;path=17">Spicy</a>
+                    </li>
+                    <li>
+                        <a href="indexc957.html?route=product/category&amp;path=24">Fruity</a>
+                    </li>
+                    <li>
+                        <a href="index8122.html?route=product/category&amp;path=34">Fresh</a>
+                        <ul>
+                            <li>
+                                <a href="indexd86f.html?route=product/category&amp;path=34_38">Citrus</a>
+                            </li>
+                            <li>
+                                <a href="index9716.html?route=product/category&amp;path=34_37">Fruity</a>
+                            </li>
+                            <li>
+                                <a href="index2bab.html?route=product/category&amp;path=34_39">Green</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="indexbe11.html?route=product/category&amp;path=34_52" class="activSub">test 20</a>
+                                <ul>
+                                    <li><a href="indexcc97.html?route=product/category&amp;path=34_52_58">test 25</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="indexb234.html?route=product/category&amp;path=34_53">test 21</a>
+                            </li>
+                            <li>
+                                <a href="indexcd03.html?route=product/category&amp;path=34_54">test 22</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="index000c.html?route=product/category&amp;path=34_55">test 23</a>
+                            </li>
+                            <li>
+                                <a href="indexfee0.html?route=product/category&amp;path=34_56">test 24</a>
+                            </li>
+                            <li>
+                                <a href="index7fe6.html?route=product/category&amp;path=34_41">test 8</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="indexd7cc.html?route=product/category&amp;path=34_42">test 9</a>
+                            </li>
+                            <li>
+                                <a href="index6493.html?route=product/category&amp;path=34_40">Water</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li> <a href="indexc295.html?route=information/blogger/blogs">Blogs</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+        @RenderBody()
+    
+    <footer>
+        <div id="footer" class="container">
+            <div class="footer_inner">
+                <div class="footer_left_block col-sm-3 column">
+                    <h5>About us</h5>
+                    <ul class="about">
+                        <li class="footer-logo"><a href="#"><img src="~/Content/image/catalog/footer-logo.png" alt=""></a></li>
+                        <li class="desc">Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes</li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 column">
+                    <h5>Information</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index8816.html?route=information/information&amp;information_id=4">About Us</a></li>
+                        <li><a href="index1766.html?route=information/information&amp;information_id=6">Delivery Information</a></li>
+                        <li><a href="index1679.html?route=information/information&amp;information_id=3">Privacy Policy</a></li>
+                        <li><a href="index99e4.html?route=information/information&amp;information_id=5">Terms &amp; Conditions</a></li>
+                        <li class="last"><a href="index2724.html?route=information/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 column">
+                    <h5>My Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="indexe223.html?route=account/account">My Account</a></li>
+                        <li><a href="indexe223.html?route=account/order">Order History</a></li>
+                        <li><a href="indexe223.html?route=account/wishlist">Wish List</a></li>
+                        <li><a href="indexe223.html?route=account/newsletter">Newsletter</a></li>
+                        <li><a href="indexf110.html?route=product/special">Specials</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 column Contact_us">
+                    <h5>Contact Us</h5>
+                    <ul>
+                        <li class="address">Aroma Perfume Store, 42 Puffin street 12345<br>United States </li>
+                        <li class="phoneno"> 0123456789</li>
+                        <li class="email"><a href="#">support@yourstore.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fotter_bottom_section">
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3 column newsletter">
+                            <h5 class="toggle">NewsLetter<a class="mobile_togglemenu"> </a></h5>
+                            <ul class="list-unstyled">
+                                <form method="post">
+                                    <div class="form-group required">
+                                        <img src="~/Content/image/catalog/envelop.png" alt="">
+                                        <h3 class="toggle">NewsLetter</h3>
+                                        <div class="col-sm-10">
+                                            <input type="email" name="txtemail" id="txtemail" value="" placeholder="E-Mail" class="form-control input-lg" />
+                                            <button type="submit" class="btn btn-default btn-lg" onclick="return subscribe();">Subscribe<i class="fa fa-long-arrow-right" aria-hidden="true"></i><i class="fa fa-long-arrow-left" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_payment_block">
+                    <ul class="payment_block">
+                        <li class="visa">
+                            <a href="#"> </a>
+                        </li>
+                        <li class="mastro">
+                            <a href="#"> </a>
+                        </li>
+                        <li class="paypal">
+                            <a href="#"> </a>
+                        </li>
+                        <li class="mastercard">
+                            <a href="#"> </a>
+                        </li>
+                        <li class="discover">
+                            <a href="#"> </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer_bottom_links">
+                <div class="footer_bottom container">
+                    <div id="links">
+                        <ul>
+                            <li class="first"><a href="index3d18.html?route=affiliate/account">Affiliates</a></li>
+                            <li><a href="index4dd2.html?route=account/voucher">Gift Certificates</a></li>
+                            <li><a href="index71ba.html?route=account/return/add">Returns</a></li>
+                            <li><a href="index7cb2.html?route=information/sitemap">Site Map</a></li>
+                            <li class="last"><a href="index2724.html?route=information/contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <p>Powered By <a href="http://www.opencart.com/">OpenCart</a> Your Store &copy; 2019</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

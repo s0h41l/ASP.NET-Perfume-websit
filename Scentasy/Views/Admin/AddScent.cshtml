@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Add Scent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Add Scent</h2>
+
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-holder">
+                        <h1 class="main-title float-left">Add Scent</h1>
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item">Home</li>
+                            <li class="breadcrumb-item active">Add Scent</li>
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <form action="~/Admin/AddScent" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Name</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="Name" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Type">Type</label>
+                        <div class="col-md-10 w-25">
+                            <select class="form-control" name="TypeId">
+                                <option value="1">Men</option>
+                                <option value="2">Women</option>
+                                <option value="3">Both</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Price</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" name="Price" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Image</label>
+                        <div class="col-md-10 w-25">
+                            <input class="btn btn-secondary" type="file" name="Image" accept="image/x-png,image/gif,image/jpeg" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Add Scent" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <br>
+
+
+        </div>
+    </div>
+</div>
+</div>
