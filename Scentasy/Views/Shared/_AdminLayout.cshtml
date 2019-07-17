@@ -185,6 +185,52 @@
     <script src="~/Content/admin/assets/plugins/counterup/jquery.counterup.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
+
+
+    @{
+        if (Alert.PerfumeDelete)
+        {
+            <script>
+        alertify.warning('Deleted!');
+            </script>
+            Alert.PerfumeDelete = false;
+        }
+    }
+
+
+    @{
+        if (Alert.PerfumeAdd)
+        {
+            <script>
+        alertify.success('Perfume Added Successfully!');
+            </script>
+            Alert.AddedToCart = false;
+        }
+    }
+
+
+
+    @{
+        if (Alert.ScentDelete)
+        {
+            <script>
+        alertify.warning('Deleted!');
+            </script>
+            Alert.PerfumeDelete = false;
+        }
+    }
+
+
+    @{
+        if (Alert.ScentAdd)
+        {
+            <script>
+        alertify.success('Scent Added Successfully!');
+            </script>
+            Alert.AddedToCart = false;
+        }
+    }
+
     <script>
         $(document).ready(function () {
             $('table').DataTable();

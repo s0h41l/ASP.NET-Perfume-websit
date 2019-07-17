@@ -246,6 +246,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
@@ -352,6 +353,9 @@
     <Content Include="Views\Shared\_ClientLayout.cshtml" />
     <Content Include="Views\Client\Products.cshtml" />
     <Content Include="Views\Client\ViewPerfume.cshtml" />
+    <Content Include="Views\Client\All.cshtml" />
+    <Content Include="Views\Client\Men.cshtml" />
+    <Content Include="Views\Client\Women.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
