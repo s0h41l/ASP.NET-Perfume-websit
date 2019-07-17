@@ -1,4 +1,6 @@
-﻿<title>Home</title>
+﻿@using Scentasy.Models.Models
+<title>Home</title>
+
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_ClientLayout.cshtml";
@@ -70,39 +72,59 @@
                     <a class="next fa fa-long-arrow-right">&nbsp;</a>
                 </div>
                 <div class="box-product product-carousel" id="tabspecial-carousel">
-                    <div class="slider-item">
-                        <div class="product-block product-thumb transition">
-                            <div class="product-block-inner">
-                                <div class="image">
-                                    <a href="indexf073.html?route=product/product&amp;product_id=30">
-                                        <img src="~/Content/image/cache/catalog/20-277x382.jpg" alt="Acqua Di Gio" title="Acqua Di Gio" class="img-responsive" />
-                                    </a>
-                                    <span class="saleicon sale">Sale</span>
-                                    <div class="product_hover">
-                                        <div class="hover_button">
-                                            <button class="button_cart" type="button" data-toggle="tooltip" data-placement="left" title="Add to Cart" onclick="cart.add('48');"><i class="fa fa-shopping-cart"></i></button>
 
-                                        </div>
-                                        <div class="rating">
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+
+
+                    @foreach (var i in ViewData["latest"] as List<ProductViewModel>)
+                    {
+
+                        <div class="slider-item">
+                            <div class="product-block product-thumb transition">
+                                <div class="product-block-inner">
+                                    <div class="image">
+                                        <a href="~/Client/ViewPerfume/@i.Id">
+                                            <img src="~/image/product/@i.Photo" alt="Acqua Di Gio" title="Acqua Di Gio" class="img-responsive" />
+                                        </a>
+                                        <div class="product_hover">
+                                            <div class="hover_button">
+                                                <button class="button_cart" type="button" data-toggle="tooltip" data-placement="left" title="Add to Cart" onclick="cart.add('48');"><i class="fa fa-shopping-cart"></i></button>
+
+                                            </div>
+                                            <div class="rating">
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="caption">
-                                    <h4><a href="indexf073.html?route=product/product&amp;product_id=30">Acqua Di Gio</a></h4>
-                                    <p class="price">
-                                        <span class="price-new">$98.00</span> <span class="price-old">$122.00</span>
-                                        <span class="price-tax">Ex Tax: $80.00</span>
-                                    </p>
+                                    <div class="caption">
+                                        <h4><a href="~/Client/ViewPerfume/@i.Id">@i.Name</a></h4>
+                                        <p class="price">
+                                            <span class="price-new">$@i.Price</span> 
+                                            <span class="price-tax">Ex Tax: $80.00</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="slider-item">
+
+                    }
+
+
+
+
+
+                    
+
+
+
+
+
+                    <!--
+                    
+                        <div class="slider-item">
                         <div class="product-block product-thumb transition">
                             <div class="product-block-inner">
                                 <div class="image">
@@ -230,6 +252,8 @@
                             </div>
                         </div>
                     </div>
+                            
+                    -->
                 </div>
             </div>
         </div>

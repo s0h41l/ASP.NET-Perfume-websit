@@ -79,3 +79,4 @@ c:\users\sohai\onedrive\documents\visual studio 2015\Projects\Scentasy\Scentasy\
 c:\users\sohai\onedrive\documents\visual studio 2015\Projects\Scentasy\Scentasy\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 c:\users\sohai\onedrive\documents\visual studio 2015\Projects\Scentasy\Scentasy\obj\Debug\Scentasy.dll
 c:\users\sohai\onedrive\documents\visual studio 2015\Projects\Scentasy\Scentasy\obj\Debug\Scentasy.pdb
+c:\users\sohai\onedrive\documents\visual studio 2015\Projects\Scentasy\Scentasy\obj\Debug\Scentasy.csprojResolveAssemblyReference.cache

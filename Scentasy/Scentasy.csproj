@@ -350,6 +350,8 @@
     <Content Include="Views\Admin\ViewScents.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_ClientLayout.cshtml" />
+    <Content Include="Views\Client\Products.cshtml" />
+    <Content Include="Views\Client\ViewPerfume.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

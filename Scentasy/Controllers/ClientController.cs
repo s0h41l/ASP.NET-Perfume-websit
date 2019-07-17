@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Scentasy.Models.Models;
 
 namespace Scentasy.Controllers
 {
@@ -11,7 +12,50 @@ namespace Scentasy.Controllers
         // GET: Client
         public ActionResult Index()
         {
+            try
+            {
+                DBEntities db = new DBEntities();
+                var latest = db.Perfumes.Take(5).ToList<Perfume>();
+                List<ProductViewModel> products = new List<ProductViewModel>();
+                foreach (var i in latest as List<Perfume>)
+                {
+                    ProductViewModel pr = new ProductViewModel()
+                    {
+                        Name = i.Name,
+                        Price = i.Price,
+                        Photo = i.Image
+                    };
+                    products.Add(pr);
+                }
 
+                ViewData["latest"] = products;
+                return View();
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+
+
+
+        public ActionResult ViewPerfume(int? id)
+        {
+            try
+            {
+                DBEntities db = new DBEntities();
+                Perfume per = db.Perfumes.Where(x => x.Id == id).FirstOrDefault();
+                ViewData["perfume"] = per;
+                return View();
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+
+        public ActionResult Products()
+        {
             return View();
         }
 
@@ -20,6 +64,9 @@ namespace Scentasy.Controllers
         {
             return View();
         }
+
+
+
 
         // GET: Client/Create
         public ActionResult Create()
