@@ -14,20 +14,12 @@ namespace Scentasy
     
     public partial class Scent
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Scent()
-        {
-            this.CustomScentPivots = new HashSet<CustomScentPivot>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<int> Type { get; set; }
         public Nullable<double> Price { get; set; }
         public string Image { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomScentPivot> CustomScentPivots { get; set; }
         public virtual Type Type1 { get; set; }
     }
 }

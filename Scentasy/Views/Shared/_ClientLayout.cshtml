@@ -38,6 +38,8 @@
     <script type="text/javascript" src="~/Content/catalog/view/javascript/megnor/bootstrap-notify.min.js"></script>
     <link href="~/Content/alertify.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/alertify.js"></script>
+    <script src="~/Content/fSelect.js"></script>
+    <link href="~/Content/fSelect.css" rel="stylesheet" />
     <script>
 
                function quickbox(){
@@ -183,7 +185,7 @@
                     <li class="top_level"> <a href="~/Client/Men">Men</a></li>
                     <li class="top_level"> <a href="~/Client/Women">Women</a></li>
                     <li class="top_level"> <a href="~/Client/All">All</a></li>
-                    <li class="menu-blog"> <a href="indexc295.html?route=information/blogger/blogs">Custom</a></li>
+                    <li class="menu-blog"> <a href="~/Client/CustomPerfume">Custom</a></li>
                 </ul>
                
             </div>
@@ -308,9 +310,9 @@
         if (Alert.DeletedFromCart)
         {
             <script>
-        alertify.warning('Deleted!');
+                alertify.warning('Deleted!');
             </script>
-            Alert.PerfumeDelete = false;
+            Alert.DeletedFromCart = false;
         }
     }
 
@@ -319,7 +321,7 @@
         if (Alert.AddedToCart)
         {
             <script>
-        alertify.success('Item Added to Cart Successfully!');
+                alertify.success('Item Added to Cart Successfully!');
             </script>
             Alert.AddedToCart = false;
         }

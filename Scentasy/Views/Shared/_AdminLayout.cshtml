@@ -115,17 +115,6 @@
                         </li>
 
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-fw fa-shopping-cart"></i> <span> Orders </span> <span class="menu-arrow"></span></a>
-                            <ul class="list-unstyled">
-                                <li><a href="~/DashBoard/ViewUtilityBills">View All</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="submenu">
-                            <a href="~/DashBoard/ViewSchedule"><i class="fa fa-fw fa-user"></i><span> Users </span> </a>
-                        </li>
-
-                        <li class="submenu">
                             <a href="#"><i class="fa fa-fw fa-cog"></i> <span> Settings </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="~/Manage">Password Update</a></li>
@@ -204,7 +193,7 @@
             <script>
         alertify.success('Perfume Added Successfully!');
             </script>
-            Alert.AddedToCart = false;
+            Alert.PerfumeAdd = false;
         }
     }
 
@@ -216,7 +205,7 @@
             <script>
         alertify.warning('Deleted!');
             </script>
-            Alert.PerfumeDelete = false;
+            Alert.ScentDelete = false;
         }
     }
 
@@ -227,7 +216,7 @@
             <script>
         alertify.success('Scent Added Successfully!');
             </script>
-            Alert.AddedToCart = false;
+            Alert.ScentAdd = false;
         }
     }
 

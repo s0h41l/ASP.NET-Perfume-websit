@@ -8,6 +8,8 @@ using System.IO;
 
 namespace Scentasy.Controllers
 {
+
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         // GET: Admin

@@ -22,7 +22,6 @@ namespace Scentasy
         public string Type { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual CustomPerfume CustomPerfume { get; set; }
         public virtual Perfume Perfume { get; set; }
     }
 }

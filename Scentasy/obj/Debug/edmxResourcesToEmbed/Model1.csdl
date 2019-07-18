@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ScentasyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="C__MigrationHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-      <PropertyRef Name="ContextKey" />
-    </Key>
-    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
   <EntityType Name="AspNetRole">
     <Key>
       <PropertyRef Name="Id" />
@@ -71,29 +61,7 @@
     <Property Name="Size" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Cart_AspNetUsers" FromRole="Cart" ToRole="AspNetUsers" />
-    <NavigationProperty Name="CustomPerfume" Relationship="Self.FK_Cart_CustomPerfume" FromRole="Cart" ToRole="CustomPerfume" />
     <NavigationProperty Name="Perfume" Relationship="Self.FK_Cart_Perfume" FromRole="Cart" ToRole="Perfume" />
-  </EntityType>
-  <EntityType Name="CustomPerfume">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_CustomPerfume" FromRole="CustomPerfume" ToRole="Cart" />
-    <NavigationProperty Name="CustomPerfume1" Relationship="Self.FK_CustomPerfume_CustomPerfume" FromRole="CustomPerfume" ToRole="CustomPerfume1" />
-    <NavigationProperty Name="CustomPerfume2" Relationship="Self.FK_CustomPerfume_CustomPerfume" FromRole="CustomPerfume1" ToRole="CustomPerfume" />
-    <NavigationProperty Name="CustomScentPivots" Relationship="Self.FK_CustomScentPivot_CustomPerfume" FromRole="CustomPerfume" ToRole="CustomScentPivot" />
-  </EntityType>
-  <EntityType Name="CustomScentPivot">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ScentId" Type="Int32" />
-    <Property Name="CustomPerfumeId" Type="Int32" />
-    <NavigationProperty Name="CustomPerfume" Relationship="Self.FK_CustomScentPivot_CustomPerfume" FromRole="CustomScentPivot" ToRole="CustomPerfume" />
-    <NavigationProperty Name="Scent" Relationship="Self.FK_CustomScentPivot_Scent" FromRole="CustomScentPivot" ToRole="Scent" />
   </EntityType>
   <EntityType Name="Perfume">
     <Key>
@@ -116,18 +84,7 @@
     <Property Name="Type" Type="Int32" />
     <Property Name="Price" Type="Double" />
     <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="CustomScentPivots" Relationship="Self.FK_CustomScentPivot_Scent" FromRole="Scent" ToRole="CustomScentPivot" />
     <NavigationProperty Name="Type1" Relationship="Self.FK_Scent_Type" FromRole="Scent" ToRole="Type" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Type">
     <Key>
@@ -180,18 +137,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cart_CustomPerfume">
-    <End Role="CustomPerfume" Type="Self.CustomPerfume" Multiplicity="0..1" />
-    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CustomPerfume">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Cart">
-        <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Cart_Perfume">
     <End Role="Perfume" Type="Self.Perfume" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -203,46 +148,6 @@
       </Principal>
       <Dependent Role="Cart">
         <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CustomPerfume_CustomPerfume">
-    <End Role="CustomPerfume" Type="Self.CustomPerfume" Multiplicity="1" />
-    <End Role="CustomPerfume1" Type="Self.CustomPerfume" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="CustomPerfume">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CustomPerfume1">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CustomScentPivot_CustomPerfume">
-    <End Role="CustomPerfume" Type="Self.CustomPerfume" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CustomScentPivot" Type="Self.CustomScentPivot" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CustomPerfume">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CustomScentPivot">
-        <PropertyRef Name="CustomPerfumeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CustomScentPivot_Scent">
-    <End Role="Scent" Type="Self.Scent" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CustomScentPivot" Type="Self.CustomScentPivot" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Scent">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CustomScentPivot">
-        <PropertyRef Name="ScentId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -279,17 +184,13 @@
     <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
   </Association>
   <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
     <EntitySet Name="Carts" EntityType="Self.Cart" />
-    <EntitySet Name="CustomPerfumes" EntityType="Self.CustomPerfume" />
-    <EntitySet Name="CustomScentPivots" EntityType="Self.CustomScentPivot" />
     <EntitySet Name="Perfumes" EntityType="Self.Perfume" />
     <EntitySet Name="Scents" EntityType="Self.Scent" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Types" EntityType="Self.Type" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -303,25 +204,9 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Cart" EntitySet="Carts" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cart_CustomPerfume" Association="Self.FK_Cart_CustomPerfume">
-      <End Role="CustomPerfume" EntitySet="CustomPerfumes" />
-      <End Role="Cart" EntitySet="Carts" />
-    </AssociationSet>
     <AssociationSet Name="FK_Cart_Perfume" Association="Self.FK_Cart_Perfume">
       <End Role="Perfume" EntitySet="Perfumes" />
       <End Role="Cart" EntitySet="Carts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CustomPerfume_CustomPerfume" Association="Self.FK_CustomPerfume_CustomPerfume">
-      <End Role="CustomPerfume" EntitySet="CustomPerfumes" />
-      <End Role="CustomPerfume1" EntitySet="CustomPerfumes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CustomScentPivot_CustomPerfume" Association="Self.FK_CustomScentPivot_CustomPerfume">
-      <End Role="CustomPerfume" EntitySet="CustomPerfumes" />
-      <End Role="CustomScentPivot" EntitySet="CustomScentPivots" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CustomScentPivot_Scent" Association="Self.FK_CustomScentPivot_Scent">
-      <End Role="Scent" EntitySet="Scents" />
-      <End Role="CustomScentPivot" EntitySet="CustomScentPivots" />
     </AssociationSet>
     <AssociationSet Name="FK_Perfume_Type" Association="Self.FK_Perfume_Type">
       <End Role="Type" EntitySet="Types" />
@@ -335,5 +220,16 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="ScentasyDBModel.C__MigrationHistory" />
   </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

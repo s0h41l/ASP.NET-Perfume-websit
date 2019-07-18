@@ -350,7 +350,213 @@ namespace Scentasy.Controllers
 
         public ActionResult Products()
         {
-            return View();
+            try
+            {
+                DBEntities db = new DBEntities();
+                var perfumes = db.Perfumes.Where(x => x.Type == 2).ToList<Perfume>();
+                if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    var result = (from a in db.Carts
+                                  join b in db.Perfumes on a.ProductId equals b.Id
+                                  where a.UserId == userId
+                                  select new CartViewModel
+                                  {
+                                      Id = a.Id,
+                                      ProductId = a.ProductId,
+                                      ProductName = b.Name,
+                                      Price = b.Price,
+                                      Quantity = a.Quantity,
+                                      Image = b.Image
+                                  }).ToList<CartViewModel>();
+
+                    ViewData["cart"] = result;
+                    
+                }
+                return View();
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+
+
+
+
+        public ActionResult CustomPerfume()
+        {
+            try
+            {
+                DBEntities db = new DBEntities();
+                var perfumes = db.Perfumes.Where(x => x.Type == 2).ToList<Perfume>();
+                if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    var result = (from a in db.Carts
+                                  join b in db.Perfumes on a.ProductId equals b.Id
+                                  where a.UserId == userId
+                                  select new CartViewModel
+                                  {
+                                      Id = a.Id,
+                                      ProductId = a.ProductId,
+                                      ProductName = b.Name,
+                                      Price = b.Price,
+                                      Quantity = a.Quantity,
+                                      Image = b.Image
+                                  }).ToList<CartViewModel>();
+
+                    ViewData["cart"] = result;
+                }
+                return View();
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+
+
+        public ActionResult MenScents()
+        {
+            try
+            {
+                DBEntities db = new DBEntities();
+                var perfumes = db.Perfumes.Where(x => x.Type == 2).ToList<Perfume>();
+                if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    var result = (from a in db.Carts
+                                  join b in db.Perfumes on a.ProductId equals b.Id
+                                  where a.UserId == userId
+                                  select new CartViewModel
+                                  {
+                                      Id = a.Id,
+                                      ProductId = a.ProductId,
+                                      ProductName = b.Name,
+                                      Price = b.Price,
+                                      Quantity = a.Quantity,
+                                      Image = b.Image
+                                  }).ToList<CartViewModel>();
+
+                    ViewData["cart"] = result;
+                }
+                var menscents = db.Scents.Where(x => x.Type == 1).ToList<Scent>();
+                ViewData["menscents"] = menscents;
+                return View();
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+
+        public ActionResult WomenScents()
+        {
+            try
+            {
+                DBEntities db = new DBEntities();
+                var perfumes = db.Perfumes.Where(x => x.Type == 2).ToList<Perfume>();
+                if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    var result = (from a in db.Carts
+                                  join b in db.Perfumes on a.ProductId equals b.Id
+                                  where a.UserId == userId
+                                  select new CartViewModel
+                                  {
+                                      Id = a.Id,
+                                      ProductId = a.ProductId,
+                                      ProductName = b.Name,
+                                      Price = b.Price,
+                                      Quantity = a.Quantity,
+                                      Image = b.Image
+                                  }).ToList<CartViewModel>();
+
+                    ViewData["cart"] = result;
+                }
+                var menscents = db.Scents.Where(x => x.Type == 2).ToList<Scent>();
+                ViewData["womenscents"] = menscents;
+                return View();
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+
+
+        public ActionResult AllScents()
+        {
+            try
+            {
+                DBEntities db = new DBEntities();
+                var perfumes = db.Perfumes.Where(x => x.Type == 2).ToList<Perfume>();
+                if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    var result = (from a in db.Carts
+                                  join b in db.Perfumes on a.ProductId equals b.Id
+                                  where a.UserId == userId
+                                  select new CartViewModel
+                                  {
+                                      Id = a.Id,
+                                      ProductId = a.ProductId,
+                                      ProductName = b.Name,
+                                      Price = b.Price,
+                                      Quantity = a.Quantity,
+                                      Image = b.Image
+                                  }).ToList<CartViewModel>();
+
+                    ViewData["cart"] = result;
+                }
+                var menscents = db.Scents.Where(x => x.Type == 3).ToList<Scent>();
+                ViewData["allmenscents"] = menscents;
+                return View();
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+        [HttpPost]
+        public ActionResult ContinueScent(ContinueScentsViewModel collection)
+        {
+            try
+            {
+                DBEntities db = new DBEntities();
+                var perfumes = db.Perfumes.Where(x => x.Type == 2).ToList<Perfume>();
+                if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    var result = (from a in db.Carts
+                                  join b in db.Perfumes on a.ProductId equals b.Id
+                                  where a.UserId == userId
+                                  select new CartViewModel
+                                  {
+                                      Id = a.Id,
+                                      ProductId = a.ProductId,
+                                      ProductName = b.Name,
+                                      Price = b.Price,
+                                      Quantity = a.Quantity,
+                                      Image = b.Image
+                                  }).ToList<CartViewModel>();
+
+                    ViewData["cart"] = result;
+                }
+                List<Scent> scents = new List<Scent>();
+                foreach (string i in collection.Scents)
+                {
+                    int id = Convert.ToInt32(i);
+                    Scent scnt = db.Scents.Where(x => x.Id == id).FirstOrDefault();
+                    scents.Add(scnt);
+                }
+                ViewData["selectedscents"] = scents;
+                return View();
+            }catch(Exception exp)
+            {
+                return Content(exp.Message);
+            }
         }
 
         // GET: Client/Details/5

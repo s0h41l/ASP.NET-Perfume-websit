@@ -72,21 +72,6 @@
     <Property Name="Size" Type="varchar" MaxLength="30" />
     <Property Name="Type" Type="varchar" MaxLength="20" />
   </EntityType>
-  <EntityType Name="CustomPerfume">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="200" />
-  </EntityType>
-  <EntityType Name="CustomScentPivot">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ScentId" Type="int" />
-    <Property Name="CustomPerfumeId" Type="int" />
-  </EntityType>
   <EntityType Name="Perfume">
     <Key>
       <PropertyRef Name="Id" />
@@ -106,16 +91,6 @@
     <Property Name="Type" Type="int" />
     <Property Name="Price" Type="float" />
     <Property Name="Image" Type="text" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Type">
     <Key>
@@ -138,18 +113,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cart_CustomPerfume">
-    <End Role="CustomPerfume" Type="Self.CustomPerfume" Multiplicity="0..1" />
-    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CustomPerfume">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Cart">
-        <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Cart_Perfume">
     <End Role="Perfume" Type="Self.Perfume" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -161,46 +124,6 @@
       </Principal>
       <Dependent Role="Cart">
         <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CustomPerfume_CustomPerfume">
-    <End Role="CustomPerfume" Type="Self.CustomPerfume" Multiplicity="1" />
-    <End Role="CustomPerfume1" Type="Self.CustomPerfume" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="CustomPerfume">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CustomPerfume1">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CustomScentPivot_CustomPerfume">
-    <End Role="CustomPerfume" Type="Self.CustomPerfume" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CustomScentPivot" Type="Self.CustomScentPivot" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CustomPerfume">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CustomScentPivot">
-        <PropertyRef Name="CustomPerfumeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CustomScentPivot_Scent">
-    <End Role="Scent" Type="Self.Scent" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CustomScentPivot" Type="Self.CustomScentPivot" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Scent">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CustomScentPivot">
-        <PropertyRef Name="ScentId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -296,35 +219,16 @@
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CustomPerfume" EntityType="Self.CustomPerfume" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CustomScentPivot" EntityType="Self.CustomScentPivot" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Perfume" EntityType="Self.Perfume" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Scent" EntityType="Self.Scent" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Cart_AspNetUsers" Association="Self.FK_Cart_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Cart" EntitySet="Cart" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cart_CustomPerfume" Association="Self.FK_Cart_CustomPerfume">
-      <End Role="CustomPerfume" EntitySet="CustomPerfume" />
-      <End Role="Cart" EntitySet="Cart" />
-    </AssociationSet>
     <AssociationSet Name="FK_Cart_Perfume" Association="Self.FK_Cart_Perfume">
       <End Role="Perfume" EntitySet="Perfume" />
       <End Role="Cart" EntitySet="Cart" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CustomPerfume_CustomPerfume" Association="Self.FK_CustomPerfume_CustomPerfume">
-      <End Role="CustomPerfume" EntitySet="CustomPerfume" />
-      <End Role="CustomPerfume1" EntitySet="CustomPerfume" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CustomScentPivot_CustomPerfume" Association="Self.FK_CustomScentPivot_CustomPerfume">
-      <End Role="CustomPerfume" EntitySet="CustomPerfume" />
-      <End Role="CustomScentPivot" EntitySet="CustomScentPivot" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CustomScentPivot_Scent" Association="Self.FK_CustomScentPivot_Scent">
-      <End Role="Scent" EntitySet="Scent" />
-      <End Role="CustomScentPivot" EntitySet="CustomScentPivot" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
