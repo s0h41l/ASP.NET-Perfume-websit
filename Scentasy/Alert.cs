@@ -13,5 +13,7 @@ namespace Scentasy
         public static bool ScentDelete = false;
         public static bool AddedToCart = false;
         public static bool DeletedFromCart = false;
+        public static bool CustomAdded = false;
+        public static bool CustomDeleted = false;
     }
 }

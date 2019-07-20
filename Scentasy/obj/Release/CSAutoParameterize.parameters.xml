@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=DESKTOP-LTIT6HO;Initial Catalog=ScentasyDB;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\sohai\\OneDrive\\Documents\\Visual\ Studio\ 2015\\Projects\\Scentasy\\Scentasy\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="DBEntities-Web.config Connection String" description="DBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-LTIT6HO;initial catalog=ScentasyDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\sohai\\OneDrive\\Documents\\Visual\ Studio\ 2015\\Projects\\Scentasy\\Scentasy\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBEntities']/@connectionString" />
+  </parameter>
+</parameters>

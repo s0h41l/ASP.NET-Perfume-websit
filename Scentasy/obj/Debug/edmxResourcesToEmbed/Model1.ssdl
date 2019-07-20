@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ScentasyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="__MigrationHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-      <PropertyRef Name="ContextKey" />
-    </Key>
-    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-  </EntityType>
   <EntityType Name="AspNetRoles">
     <Key>
       <PropertyRef Name="Id" />
@@ -72,6 +62,24 @@
     <Property Name="Size" Type="varchar" MaxLength="30" />
     <Property Name="Type" Type="varchar" MaxLength="20" />
   </EntityType>
+  <EntityType Name="CustomOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="BottleSize" Type="varchar" MaxLength="20" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="CustomOrderScent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ScentId" Type="int" />
+    <Property Name="CustomOrderId" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="Perfume">
     <Key>
       <PropertyRef Name="Id" />
@@ -124,6 +132,34 @@
       </Principal>
       <Dependent Role="Cart">
         <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomOrderScent_CustomOrder">
+    <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomOrderScent" Type="Self.CustomOrderScent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomOrderScent">
+        <PropertyRef Name="CustomOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomOrderScent_Scent">
+    <End Role="Scent" Type="Self.Scent" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomOrderScent" Type="Self.CustomOrderScent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomOrderScent">
+        <PropertyRef Name="ScentId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -212,13 +248,14 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="ScentasyDBModelStoreContainer">
-    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomOrder" EntityType="Self.CustomOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomOrderScent" EntityType="Self.CustomOrderScent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Perfume" EntityType="Self.Perfume" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Scent" EntityType="Self.Scent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
@@ -229,6 +266,14 @@
     <AssociationSet Name="FK_Cart_Perfume" Association="Self.FK_Cart_Perfume">
       <End Role="Perfume" EntitySet="Perfume" />
       <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomOrderScent_CustomOrder" Association="Self.FK_CustomOrderScent_CustomOrder">
+      <End Role="CustomOrder" EntitySet="CustomOrder" />
+      <End Role="CustomOrderScent" EntitySet="CustomOrderScent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomOrderScent_Scent" Association="Self.FK_CustomOrderScent_Scent">
+      <End Role="Scent" EntitySet="Scent" />
+      <End Role="CustomOrderScent" EntitySet="CustomOrderScent" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

@@ -1,0 +1,116 @@
+﻿@using Scentasy.Models.Models
+
+<title>Home</title>
+
+@{
+    ViewBag.Title = "Perfume";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+
+<div class="quickview_modal container">
+    <div class="quickview-container">
+
+
+        @foreach (var i in ViewData["perfume"] as List<Perfume>)
+        {
+
+
+            <div id="content" class="productpage-quickview">
+                <div class="">
+                    <h2 class="page-title">La Vie Est Belle</h2>
+
+                    <div class="col-sm-6 product-left">
+                        <div class="product-info">
+
+
+
+                            <div class="left product-image thumbnails">
+                                <div class="image"><a class="thumbnail" title="La Vie Est Belle"><img id="tmzoom" src="~/image/product/@i.Image" data-zoom-image="http://opencart.templatemela.com/OPC09/OPC090218/image/cache/catalog/6-721x1000.jpg" title="La Vie Est Belle" alt="La Vie Est Belle" /></a></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 product-right">
+                        <h3 class="product-title">@i.Name</h3>
+
+
+                        <div class="rating-wrapper">
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+
+                            <a class="review-count" href="#" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a><a class="write-review" href="#" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><i class="fa fa-pencil"></i> Write a review</a>
+                        </div>
+
+
+                        <ul class="list-unstyled short-desc">
+                            <li><span class="desc">Product Code:</span>Product 8</li>
+                            <li><span class="desc">Availability:</span>In Stock</li>
+                        </ul>
+
+
+                        <ul class="list-unstyled">
+                            <li>
+                             
+                                <h4 class="special-price">$@i.Price</h4>
+                            </li>
+                            <li class="price-tax">Ex Tax:<span>$70.00</span></li>
+                        </ul>
+
+                        <div id="product2">
+
+                            <div class="product-rightinfo">
+
+
+                                <div class="form-group cart-block">
+
+
+
+                                    @using Microsoft.AspNet.Identity
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <form action="~/Client/AddToCart" method="post">
+                                            <label class="control-label qty" for="input-quantity">Qty</label>
+                                            <input type="text" name="Quantity" value="1" size="2" id="input-quantity" class="form-control" />
+                                            <input type="hidden" name="ProductId" value="@i.Id" class="form-control"/>
+                                            <button type="submit" id="button-cart2" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">Add to Cart</button>
+                                        </form>
+
+                                    }
+                                    else
+                                    {
+                                        <a href="~/Account/Login"><h4>Login to Add to Cart</h4></a>
+                                    }
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="content_product_block"> </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        }
+
+
+
+
+        
+
+
+
+
+
+    </div>
+</div>
+

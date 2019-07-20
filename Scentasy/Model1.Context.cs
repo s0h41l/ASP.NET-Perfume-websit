@@ -33,6 +33,7 @@ namespace Scentasy
         public virtual DbSet<Perfume> Perfumes { get; set; }
         public virtual DbSet<Scent> Scents { get; set; }
         public virtual DbSet<Type> Types { get; set; }
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<CustomOrder> CustomOrders { get; set; }
+        public virtual DbSet<CustomOrderScent> CustomOrderScents { get; set; }
     }
 }

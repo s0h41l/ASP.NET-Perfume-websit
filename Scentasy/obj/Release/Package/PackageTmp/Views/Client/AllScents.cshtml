@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "AllScents";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+<script>
+(function($) {
+    $(function() {
+        window.fs_test = $('.test').fSelect();
+    });
+})(jQuery);
+</script>
+
+
+
+<div class="container mt-4 pt-5">
+    <div style="margin-bottom:1px;margin-top:3px">
+        <h3>Women Scents</h3>
+    </div>
+    <div style="margin-top:5px;min-height:400px">
+        <form action="~/Client/ContinueScent" method="post" enctype="multipart/form-data">
+            <select name="Scents" required class="test form-control" multiple="multiple">
+                <optgroup label="Scents">
+                    @foreach (var i in ViewData["allmenscents"] as List<Scent>)
+                    {
+                        <option value="@i.Id">@i.Name ($@i.Price)</option>
+                    }
+                </optgroup>
+            </select>
+            <button type="submit" id="button-cart2" class="pull-right btn btn-primary btn-lg btn-block" style="margin-top:2px">Continue</button>
+        </form>
+    </div>
+</div>

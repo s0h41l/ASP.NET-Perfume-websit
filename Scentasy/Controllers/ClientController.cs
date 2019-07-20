@@ -40,6 +40,45 @@ namespace Scentasy.Controllers
                     ViewData["cart"] = result;
 
 
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+                        
+                        if (noDup.Contains(i.Id))
+                        {
+                          
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
 
                 
@@ -60,6 +99,23 @@ namespace Scentasy.Controllers
 
                 ViewData["latest"] = products;
                 return View();
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+
+        public ActionResult DeleteCustomCartItem(int? id)
+        {
+            try
+            {
+                DBEntities db = new DBEntities();
+                var customOrder = db.CustomOrders.Where(x => x.Id == id).FirstOrDefault();
+                db.Entry(customOrder).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+                Alert.CustomDeleted = true;
+                return RedirectToAction("Index","Client");
             }
             catch (Exception exp)
             {
@@ -92,6 +148,46 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
 
 
                 }
@@ -131,6 +227,47 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
 
 
                 }
@@ -175,6 +312,46 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
                 var item = db.Carts.Where(x => x.Id == id).FirstOrDefault();
                 db.Entry(item).State = System.Data.Entity.EntityState.Deleted;
@@ -212,6 +389,46 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
 
                 var latest = db.Perfumes.Take(5).ToList<Perfume>();
@@ -265,6 +482,51 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+
+
+
+
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
 
                 var latest = db.Perfumes.Take(5).ToList<Perfume>();
@@ -318,6 +580,47 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
 
                 var latest = db.Perfumes.Take(5).ToList<Perfume>();
@@ -348,6 +651,50 @@ namespace Scentasy.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult AddCustomOrder(CustomViewModel collection)
+        {
+            try
+            {
+                List<string> ScentIds = collection.ScentIds.Split(',').ToList<string>();
+                DBEntities db = new DBEntities();
+                string userId = User.Identity.GetUserId();
+                CustomOrder custom = new CustomOrder() {
+                    Name=collection.CustomName,
+                    BottleSize=collection.BottleSize,
+                    UserId=userId,
+                    Quantity=collection.Quantity
+                };
+                db.CustomOrders.Add(custom);
+                db.SaveChanges();
+                foreach(string i in ScentIds)
+                {
+                    if (i != "")
+                    {
+                        CustomOrderScent cust = new CustomOrderScent()
+                        {
+                            ScentId=Convert.ToInt32(i),
+                            CustomOrderId=custom.Id
+                        };
+                        db.CustomOrderScents.Add(cust);
+
+                    }
+                    
+                
+                }
+                db.SaveChanges();
+                Alert.CustomAdded = true;
+                return RedirectToAction("CustomPerfume", "Client");
+            }
+            catch (Exception exp)
+            {
+                return Content(exp.Message);
+            }
+        }
+
+
+
+
         public ActionResult Products()
         {
             try
@@ -371,7 +718,48 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
-                    
+
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
+
                 }
                 return View();
             }
@@ -407,6 +795,46 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
                 return View();
             }
@@ -440,6 +868,46 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
                 var menscents = db.Scents.Where(x => x.Type == 1).ToList<Scent>();
                 ViewData["menscents"] = menscents;
@@ -474,6 +942,46 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
                 var menscents = db.Scents.Where(x => x.Type == 2).ToList<Scent>();
                 ViewData["womenscents"] = menscents;
@@ -509,6 +1017,46 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
                 var menscents = db.Scents.Where(x => x.Type == 3).ToList<Scent>();
                 ViewData["allmenscents"] = menscents;
@@ -543,6 +1091,46 @@ namespace Scentasy.Controllers
                                   }).ToList<CartViewModel>();
 
                     ViewData["cart"] = result;
+
+                    var customCart = (from a in db.CustomOrders
+                                      join b in db.CustomOrderScents on a.Id equals b.CustomOrderId
+                                      where a.UserId == userId
+                                      select new CustomCartViewModel
+                                      {
+                                          Id = a.Id,
+                                          Name = a.Name,
+                                          Quantity = a.Quantity,
+                                          Size = a.BottleSize,
+                                          ScentId = b.ScentId
+                                      }).ToList<CustomCartViewModel>();
+
+                    List<CustomCartViewModel> noDuplicate = new List<CustomCartViewModel>();
+                    List<int?> noDup = new List<int?>();
+                    foreach (var i in customCart)
+                    {
+
+                        if (noDup.Contains(i.Id))
+                        {
+
+                            foreach (CustomCartViewModel k in noDuplicate)
+                            {
+                                if (i.Id == k.Id)
+                                {
+                                    var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                                    k.ScentList.Add(scnt);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var scnt = db.Scents.Where(x => x.Id == i.ScentId).FirstOrDefault();
+                            i.ScentList.Add(scnt);
+                            noDuplicate.Add(i);
+                            noDup.Add(i.Id);
+                        }
+
+                    }
+                    ViewData["customCart"] = noDuplicate;
                 }
                 List<Scent> scents = new List<Scent>();
                 foreach (string i in collection.Scents)

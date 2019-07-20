@@ -96,13 +96,23 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="ScentasyDBModel.C__MigrationHistory">
-        <MappingFragment StoreEntitySet="__MigrationHistory">
-          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
-          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+    <EntitySetMapping Name="CustomOrders">
+      <EntityTypeMapping TypeName="ScentasyDBModel.CustomOrder">
+        <MappingFragment StoreEntitySet="CustomOrder">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="BottleSize" ColumnName="BottleSize" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomOrderScents">
+      <EntityTypeMapping TypeName="ScentasyDBModel.CustomOrderScent">
+        <MappingFragment StoreEntitySet="CustomOrderScent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomOrderId" ColumnName="CustomOrderId" />
+          <ScalarProperty Name="ScentId" ColumnName="ScentId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

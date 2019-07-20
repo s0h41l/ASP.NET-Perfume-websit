@@ -136,6 +136,9 @@
                             </div>
                             <ul class="dropdown-menu pull-right cart-menu">
                                 <li>
+                                    @{ 
+                                        double? sum = 0;
+                                    }
 
                                     @if (Request.IsAuthenticated)
                                     {
@@ -149,23 +152,79 @@
                                                     </div>
                                                     <div class="col-sm-5">
                                                         <p class="">@i.ProductName</p>
-                                                        <p class="">@i.Price "X" @i.Quantity</p>
+                                                        @{
+
+                                                            double? price = i.Price * i.Quantity;
+                                                            sum = sum + price;
+
+                                                             }
+                                                        <p class="">$@i.Price x @i.Quantity</p>
+                                                        <p class="">Total : $@price</p>
 
                                                         
-                                                    </div>
-                                                    <div class="col-sm-2">
+
+
+
+                                                 </div>
+
+                                                 <div class="col-sm-2">
                                                         <a href="~/Client/DeleteCartItem/@i.Id" class=""><i class="fa fa-trash"></i></a>
                                                     </div>
 
                                                 </div>
                                             </div>
+                                            <hr>
+
 
 
                                         }
 
-                                    }
-                                    else
-                                    {
+                                         <p class="lead">Total: $@sum</p>
+
+                                         <hr>
+                                        <h3>Custom Orders</h3>
+                                        <hr>
+                                          List<int?> dublicate = new List<int?>(); ;
+                                          foreach (var i in ViewData["customCart"] as List<CustomCartViewModel>) {
+
+                                                 <div>
+                                               @if (!dublicate.Contains(i.Id))
+                                               {
+                                                <div class="row">
+                                                    <div class="col-sm-10">
+                                                        <p style=""><b>@i.Name x @i.Quantity</b></p>
+                                                        <p style=""><b>@i.Size Bottle</b></p>
+                                                        <ol>
+                                                            @{
+                                                                List<Scent> scents = i.ScentList;
+                                                            }
+                                                            @foreach (Scent j in scents)
+                                                            {
+                                                                <li>@j.Name  $@j.Price</li>
+
+                                                            }
+                                                        </ol>
+                                                        <div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <a href="~/Client/DeleteCustomCartItem/@i.Id" class=""><i class="fa fa-trash"></i></a>
+                                                    </div>
+
+                                                </div>
+                                                  }
+                                            </div>
+                                            <hr>
+
+                                           dublicate.Add(i.Id);
+
+                                      }
+
+
+                                   }else{
+
                                         <p class="text-center">Your shopping cart is empty!</p>
                                     }
 
@@ -326,5 +385,28 @@
             Alert.AddedToCart = false;
         }
     }
+
+
+    @{
+        if (Alert.CustomAdded)
+        {
+            <script>
+                alertify.success('Item Added to Cart Successfully!');
+            </script>
+            Alert.CustomAdded = false;
+        }
+    }
+
+    @{
+        if (Alert.CustomDeleted)
+        {
+            <script>
+                alertify.warning('Deleted!');
+            </script>
+            Alert.CustomDeleted= false;
+        }
+    }
+
+
 </body>
 </html>

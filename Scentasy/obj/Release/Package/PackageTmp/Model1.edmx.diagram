@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc1ddc0d0ebb4fd7aee716400a75faa0" Name="Diagram1">
+        <EntityTypeShape EntityType="ScentasyDBModel.AspNetRole" Width="1.5" PointX="1.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScentasyDBModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScentasyDBModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScentasyDBModel.AspNetUser" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScentasyDBModel.Cart" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScentasyDBModel.Perfume" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScentasyDBModel.Scent" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScentasyDBModel.Type" Width="1.5" PointX="1.5" PointY="19.875" IsExpanded="true" />
+        <AssociationConnector Association="ScentasyDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ScentasyDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ScentasyDBModel.FK_Cart_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="ScentasyDBModel.FK_Cart_Perfume" ManuallyRouted="false" />
+        <AssociationConnector Association="ScentasyDBModel.FK_Perfume_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="ScentasyDBModel.FK_Scent_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="ScentasyDBModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ScentasyDBModel.C__MigrationHistory" Width="1.5" PointX="8.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

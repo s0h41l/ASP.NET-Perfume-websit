@@ -10,9 +10,12 @@
     <div class="box-heading"><span>Selected Scents to Make Perfume</span></div>
     <div class="box-content">
         <div class="box-product productbox-grid" id="latest-grid">
+            @{ 
+                string scentsIds = "";
+            }
             @foreach (var i in ViewData["selectedscents"] as List<Scent>)
             {
-
+                scentsIds = scentsIds + i.Id+",";
                 <div class="product-items">
                     <div class="product-block product-thumb transition">
                         <div class="product-block-inner">
@@ -43,17 +46,27 @@
 <div class="container">
     <div>
         <h3>Select Bottle Size</h3>
-        <form action="/" method="post">
+        <form action="~/Client/AddCustomOrder" method="post">
             <div style="margin-top:5px">
                 <label>Custom Name</label>
-                <input type="text" class="form-control" name="customNamee" required />
+                <input type="text" class="form-control" name="CustomName" required />
                 <label>Size of Bottle</label>
-                <select class="form-control">
+                <select name="BottleSize" class="form-control" required>
                     <option value="small">Small Bottle</option>
                     <option value="big">Big Bottle</option>
                 </select>
+                <input type="hidden" name="ScentIds" value="@scentsIds"/>
+                <label>Quantity</label>
+                <input type="number"  min="1" max="30" name="Quantity" value="1" size="2" id="input-quantity" class="form-control" required/>
 
-                <button type="submit" style="margin-top:5px" id="button-cart2"  class="pull-right btn btn-primary btn-lg btn-block">Add to Cart</button>
+                @if (Request.IsAuthenticated)
+                {
+                    <button type="submit" style="margin-top:5px" id="button-cart2" class="pull-right btn btn-primary btn-lg btn-block">Add to Cart</button>
+                }
+                else
+                {
+                    <a href="~/Account/Login" class="pull-right text-danger" style="margin-top:5px">Login to Add to Cart!</a>
+                }
             </div>
         </form>
     </div>

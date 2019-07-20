@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "ContinueScent";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+
+
+<div class="box container" id="latest">
+    <div class="box-heading"><span>Selected Scents to Make Perfume</span></div>
+    <div class="box-content">
+        <div class="box-product productbox-grid" id="latest-grid">
+            @foreach (var i in ViewData["selectedscents"] as List<Scent>)
+            {
+
+                <div class="product-items">
+                    <div class="product-block product-thumb transition">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a>
+                                    <img src="~/image/product/@i.Image" alt="White Diamonds" title="White Diamonds" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="caption">
+                                <h4><a>@i.Name</a></h4>
+                                <p class="price">
+                                    <span class="price-new">$@i.Price</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+
+    </div>
+
+    
+</div>
+<div class="container">
+    <div>
+        <h3>Select Bottle Size</h3>
+        <form action="/" method="post">
+            <div style="margin-top:5px">
+                <label>Custom Name</label>
+                <input type="text" class="form-control" name="customNamee" required />
+                <label>Size of Bottle</label>
+                <select class="form-control">
+                    <option value="small">Small Bottle</option>
+                    <option value="big">Big Bottle</option>
+                </select>
+
+                <button type="submit" style="margin-top:5px" id="button-cart2"  class="pull-right btn btn-primary btn-lg btn-block">Add to Cart</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

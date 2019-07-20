@@ -85,6 +85,7 @@
     <Property Name="Price" Type="Double" />
     <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Type1" Relationship="Self.FK_Scent_Type" FromRole="Scent" ToRole="Type" />
+    <NavigationProperty Name="CustomOrderScents" Relationship="ScentasyDBModel.FK_CustomOrderScent_Scent" FromRole="Scent" ToRole="CustomOrderScent" />
   </EntityType>
   <EntityType Name="Type">
     <Key>
@@ -220,16 +221,64 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
-    <EntitySet Name="C__MigrationHistory" EntityType="ScentasyDBModel.C__MigrationHistory" />
+    <EntitySet Name="CustomOrders" EntityType="ScentasyDBModel.CustomOrder" />
+    <EntitySet Name="CustomOrderScents" EntityType="ScentasyDBModel.CustomOrderScent" />
+    <AssociationSet Name="FK_CustomOrderScent_CustomOrder" Association="ScentasyDBModel.FK_CustomOrderScent_CustomOrder">
+      <End Role="CustomOrder" EntitySet="CustomOrders" />
+      <End Role="CustomOrderScent" EntitySet="CustomOrderScents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomOrderScent_Scent" Association="ScentasyDBModel.FK_CustomOrderScent_Scent">
+      <End Role="Scent" EntitySet="Scents" />
+      <End Role="CustomOrderScent" EntitySet="CustomOrderScents" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="C__MigrationHistory">
+  <EntityType Name="CustomOrder">
     <Key>
-      <PropertyRef Name="MigrationId" />
-      <PropertyRef Name="ContextKey" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BottleSize" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CustomOrderScents" Relationship="ScentasyDBModel.FK_CustomOrderScent_CustomOrder" FromRole="CustomOrder" ToRole="CustomOrderScent" />
   </EntityType>
+  <EntityType Name="CustomOrderScent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ScentId" Type="Int32" />
+    <Property Name="CustomOrderId" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="CustomOrder" Relationship="ScentasyDBModel.FK_CustomOrderScent_CustomOrder" FromRole="CustomOrderScent" ToRole="CustomOrder" />
+    <NavigationProperty Name="Scent" Relationship="ScentasyDBModel.FK_CustomOrderScent_Scent" FromRole="CustomOrderScent" ToRole="Scent" />
+  </EntityType>
+  <Association Name="FK_CustomOrderScent_CustomOrder">
+    <End Type="ScentasyDBModel.CustomOrder" Role="CustomOrder" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ScentasyDBModel.CustomOrderScent" Role="CustomOrderScent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomOrderScent">
+        <PropertyRef Name="CustomOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomOrderScent_Scent">
+    <End Type="ScentasyDBModel.Scent" Role="Scent" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ScentasyDBModel.CustomOrderScent" Role="CustomOrderScent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomOrderScent">
+        <PropertyRef Name="ScentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

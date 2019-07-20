@@ -20,7 +20,10 @@
         <AssociationConnector Association="ScentasyDBModel.FK_Perfume_Type" ManuallyRouted="false" />
         <AssociationConnector Association="ScentasyDBModel.FK_Scent_Type" ManuallyRouted="false" />
         <AssociationConnector Association="ScentasyDBModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ScentasyDBModel.C__MigrationHistory" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ScentasyDBModel.CustomOrder" Width="1.5" PointX="7.375" PointY="4.5" />
+        <EntityTypeShape EntityType="ScentasyDBModel.CustomOrderScent" Width="1.5" PointX="9.625" PointY="6.25" />
+        <AssociationConnector Association="ScentasyDBModel.FK_CustomOrderScent_CustomOrder" />
+        <AssociationConnector Association="ScentasyDBModel.FK_CustomOrderScent_Scent" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

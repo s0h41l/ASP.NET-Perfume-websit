@@ -1,0 +1,53 @@
+﻿@using Scentasy.Models.Models
+@{
+    ViewBag.Title = "ViewPerfumes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>View Scent</h2>
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-holder">
+                        <h1 class="main-title float-left">View Scent</h1>
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item">Home</li>
+                            <li class="breadcrumb-item active">View Scent</li>
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <table class="table table-secondary table-bordered table-striped">
+                <thead>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>Image</th>
+                <th>Delete</th>
+                </thead>
+                @foreach (var i in ViewData["scents"] as List<ProductViewModel>)
+                {
+                    <tr>
+                        <td>@i.Id</td>
+                        <td>@i.Name</td>
+                        <td>@i.Price</td>
+                        <td>@i.Type</td>
+                        <td><img src="~/image/product/@i.Photo" alt="Alternate Text" width="100" /></td>
+                        <td class=""> <a href="~/Admin/DeleteScent/@i.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a> </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+
